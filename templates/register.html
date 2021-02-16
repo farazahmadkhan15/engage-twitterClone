@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Register | Eng@ge!</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet"   href=" {{ url_for('static' , filename='bs/css/united.min.css') }} ">
+		<link rel="stylesheet" href=" {{ url_for('static' , filename='css/styles.css') }}" >
+	</head>
+	<body>
+
+		<div class="container-fluid">
+			<div class="row reg-page-banner" id="banner">
+				<div class="title col-lg-12">
+					<p class="title">
+						<a href="./">ENG@GE!</a>
+					</p>
+					<p class="subtitle">...the awesome social platform</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row pad">
+				<div class="col-lg-4 col-lg-offset-4 pad">
+					<h2 class="text-center bold">Join Eng@ge! today.</h2>
+
+
+
+					<br />
+					<form action="{{ url_for('register') }}" method="post" , enctype="multipart/form-data">
+						{{form.csrf_token}}
+						<div class="form-group">
+							{{ form.name(class="form-control", placeholder="Enter your full name")}}
+							<ul>
+								{% for error in form.name.error %}
+								<li style="color: red;">{{ error }}</li>
+								
+								{% endfor %}
+							</ul>
+						
+							
+						</div>
+	
+						<div class="form-group">
+							{{ form.username(class="form-control", placeholder="Enter your username")}}
+							<ul>
+								{% for error in form.username.error %}
+								<li style="color: red;">{{ error }}</li>
+								
+								{% endfor %}
+							</ul>
+						</div>
+	
+						<div class="form-group">
+							{{ form.password(class="form-control", placeholder="Enter your password")}}
+							<ul>
+								{% for error in form.password.error %}
+								<li style="color: red;">{{ error }}</li>
+								
+								{% endfor %}
+							</ul>
+						</div>
+	
+						<div class="form-group">
+							<label for="exampleFormControlFile1">Profile image</label>
+							{{ form.image(class="form-control-file", placeholder="Upload Image") }}
+						  </div>
+	
+						<div class="form-group">
+							<button type="submit" class="btn btn-danger btn-block">Sign up</button>
+						</div>
+					</form>
+				
+
+					<div class="form-group">
+						<a href="./"><i class="glyphicon glyphicon-arrow-left"></i> Back</a>
+					</div>
+				</div>
+			</div>
+
+			<footer>
+				<div class="row pad">
+					<div class="col-lg-12 text-center">
+						Copyright &copy; 2017 <strong> <a href="./">Eng@ge!</a></strong>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- jQuery -->
+		<script src=" {{ url_for('static',filename='bs/js/jquery.min.js') }}"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src=" {{ url_for('static',filename='bs/js/bootstrap.min.js') }}"></script>
+	</body>
+</html>
